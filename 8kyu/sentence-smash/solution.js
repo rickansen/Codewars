@@ -1,0 +1,1 @@
+let smash =  (words) => words.join(' ')
