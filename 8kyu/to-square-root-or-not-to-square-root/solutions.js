@@ -1,0 +1,1 @@
+const squareOrSquareRoot = array => array.map(x => Math.sqrt(x) % 1 === 0 ? Math.sqrt(x) : x ** 2)
