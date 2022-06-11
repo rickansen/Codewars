@@ -1,0 +1,1 @@
+let maskify = cc => cc.split('').map((x,y) => y !== cc.length -1 && y !== cc.length -2 && y !== cc.length -3 && y !== cc.length -4 ? '#' : x ).join('')
