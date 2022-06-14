@@ -1,0 +1,1 @@
+const toWeirdCase = string => string.split(' ').map(x => x.split('')).map((x,y,z) => x.map((a,b,c) => b % 2 === 0 ? a.toUpperCase() : a.toLowerCase() ).join('')).join(' ')
