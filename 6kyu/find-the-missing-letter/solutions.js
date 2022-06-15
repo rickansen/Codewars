@@ -1,0 +1,1 @@
+const findMissingLetter = array => String.fromCharCode(array.map(x => x.charCodeAt()).map((x,y,z) => y !== array.length -1 ? x + 1 === z[y+1] ? array[y] : x + 1 : array[y]).filter(x => typeof x === 'number')[0])
