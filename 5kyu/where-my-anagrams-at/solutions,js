@@ -1,0 +1,5 @@
+function anagrams(word, words) {
+  let split = word.split('')
+  let filt = words.filter(x => x.length === word.length).map(x => x.split('').sort().join('') === split.sort().join('') ? x : '').filter(x => x)
+  return filt.length !== 0 ? filt : []
+}
