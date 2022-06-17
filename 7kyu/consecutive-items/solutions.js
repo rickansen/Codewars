@@ -1,0 +1,1 @@
+let consecutive = (arr, a, b) =>  arr[arr.indexOf(a) + 1] === b || arr[arr.indexOf(b) + 1] === a
