@@ -1,0 +1,1 @@
+const squareDigits = num => Number(String(num).split('').map(x => x** 2).join(''))
