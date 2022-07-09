@@ -1,0 +1,1 @@
+const solution = (arr, options) => arr.map(x => x + (options.modifier * 2))
