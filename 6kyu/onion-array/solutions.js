@@ -1,0 +1,1 @@
+const isOnionArray = arr => arr.slice(0, Math.floor(arr.length / 2)).map((x,y) => x + arr[arr.length - y - 1] <= 10).every(x => x === true)
