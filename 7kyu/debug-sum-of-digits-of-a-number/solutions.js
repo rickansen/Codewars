@@ -1,0 +1,1 @@
+let getSumOfDigits = integer => String(integer).split('').reduce((acc,cur) => acc + +cur, 0)
