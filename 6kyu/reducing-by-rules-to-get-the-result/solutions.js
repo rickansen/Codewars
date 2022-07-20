@@ -1,0 +1,1 @@
+const reduceByRules = (numbers, rules) =>  numbers.reduce((a,b,c) => rules[(c - 1) % rules.length](a, b))
