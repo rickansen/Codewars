@@ -1,0 +1,44 @@
+function solution(arr) {
+  let bit1 = arr
+    .map((x, y, z) => (x - 1 === z[y + 1] || x + 1 === z[y + 1] ? 1 : 0))
+    .join('');
+
+  let bit2 = arr
+    .map((x, y, z) => (x - 1 === z[y - 1] || x + 1 === z[y - 1] ? 1 : 0))
+    .join('');
+
+  let bitArr = [bit1, bit2].map((x) => parseInt(x, 2));
+  let bitAnd = (bitArr[0] & bitArr[1]).toString(2);
+
+  bitAnd =
+    bitAnd.length === bit1
+      ? bitAnd
+      : '0'.repeat(bit1.length - bitAnd.length).concat(bitAnd);
+
+  bitAnd = bitAnd
+    .split('')
+    .map((x, y, z) => {
+      if (y === 0) {
+        return x == 0 && z[y + 1] == 0 ? String(arr[y]) : Number(arr[y]);
+      } else if (y === bitAnd.length - 1) {
+        return x == 0 && z[y - 1] == 0 ? String(arr[y]) : Number(arr[y]);
+      } else {
+        return x == 0 && (z[y + 1] == 1 || z[y - 1] == 1)
+          ? Number(arr[y])
+          : x == 0 && z[y + 1] == 0 && z[y - 1] == 0
+          ? `${arr[y]}`
+          : '';
+      }
+    })
+
+    .filter((x) => x);
+
+  let arr1 = [];
+  while (bitAnd.length > 0) {
+    typeof bitAnd[0] == 'number'
+      ? arr1.push(bitAnd.splice(0, 2))
+      : arr1.push(bitAnd.splice(0, 1));
+  }
+
+  return arr1.map((x) => (x.length > 1 ? x.join('-') : x[0])).join(',');
+}
