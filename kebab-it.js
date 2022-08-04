@@ -8,4 +8,4 @@ function convert (title) {
     return dirName
 }
 
-console.log(convert('asd asd - 123'))
+console.log(convert())
