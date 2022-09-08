@@ -2,13 +2,23 @@ function trifidEncode(key, period, data) {
   let regex = new RegExp(/[a-z+]/i)
   key = [...key], data = [...data].filter(x => regex.test(x))
   data = data.map( (x,y) => [~~(key.indexOf(x) / 9)+1, (~~(key.indexOf(x) / 3) % 3) + 1, (key.indexOf(x) % 3) + 1 ]  )
-  let length = ~~(data.length/period), arr = []
+  let length = ~~(data.length/period), arr = [], arr1 = [], arr2 = [], arr3= [], arr4 = []
 
   for (let i = 0; i <= length; i++) {
-    arr.push(data.splice(0,5))
+    arr.push(data.splice(0,period))
   }
 
-  return arr.map(x => x.map(a => [a[0]]))
+  arr1.push( arr.map( (x,y) => x.map( (a,b) => a[0] ) ))
+  arr2.push( arr.map( (x,y) => x.map( (a,b) => a[1] ) ))
+  arr3.push( arr.map( (x,y) => x.map( (a,b) => a[2] ) ))
+
+  let divide = arr1.map( (x,y) => x.map( (a,b) => a.concat(arr2[y][b]) ).map( (a,b) => a.concat(arr3[y][b]))).reduce((a,b) => a.concat(b)).reduce((a,b) => a.concat(b))
+  let length1 = divide.length / 3
+
+  for (let i = 0; i < length1; i++) {
+    arr4.push(divide.splice(0,3))
+  }
+  return arr4.map(x => key[(((x[0] - 1) * 9) + ( ( (x[1] - 1) * 3) + x[2]) - 1)] ).join('')
 } 
 //   1 2 3      1 2 3      1 2 3    
 // 1 E P S    1 M + Z    1 F G O    
@@ -30,8 +40,6 @@ function trifidEncode(key, period, data) {
 
 // 223 322 211 311 313  311 313 123 111 323   221 232 113 112
 // X   I   M   F   O    F   O   C   E   J     L   B   S   P
-
-
 
 
 console.log(
