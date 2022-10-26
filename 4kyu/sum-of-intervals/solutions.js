@@ -1,28 +1,59 @@
 // Solution 1: Working but too slow so it is not passing large tests
+// function sumIntervals(intervals) {
+//   let sorted = intervals
+//     .sort((a, b) => a[0] - b[0])
+//     .map((x, y, z) =>
+//       y !== 0 ? (x[0] < z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
+//     )
+//     .map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
+
+//   while (
+//     sorted.reduce((a, b) => a.concat(b)).join('') !==
+//     sorted
+//       .sort((a, b) => a[0] - b[0])
+//       .reduce((a, b) => a.concat(b))
+//       .join('')
+//   ) {
+//     sorted = sorted
+//       .sort((a, b) => a[0] - b[0])
+//       .map((x, y, z) =>
+//         y !== 0 ? (x[0] < z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
+//       )
+//       .map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
+//   }
+
+//   return sorted.map((x) => x.reduce((a, b) => b - a)).reduce((a, b) => a + b);
+// }
+
+// Solution 2
 function sumIntervals(intervals) {
-  let sorted = intervals
-    .sort((a, b) => a[0] - b[0])
-    .map((x, y, z) =>
-      y !== 0 ? (x[0] < z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
-    )
-    .map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
+  let sorted = intervals.sort((a, b) => a[0] - b[0]);
+  let updatedRange = updateWithinRange(sorted);
+  let updatedVal = updateLowerValue(updatedRange);
 
   while (
-    sorted.reduce((a, b) => a.concat(b)).join('') !==
-    sorted
+    updatedVal.reduce((a, b) => a.concat(b)).join('') !==
+    updatedVal
       .sort((a, b) => a[0] - b[0])
       .reduce((a, b) => a.concat(b))
       .join('')
   ) {
-    sorted = sorted
-      .sort((a, b) => a[0] - b[0])
-      .map((x, y, z) =>
-        y !== 0 ? (x[0] < z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
-      )
-      .map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
+    updatedVal = updateLowerValue(updateWithinRange(updatedVal));
   }
 
-  return sorted.map((x) => x.reduce((a, b) => b - a)).reduce((a, b) => a + b);
+  function updateWithinRange(arr) {
+    return arr.map((x, y, z) =>
+      y !== 0 ? (x[0] < z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
+    );
+  }
+
+  function updateLowerValue(arr) {
+    return arr.map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
+  }
+
+  return updatedVal
+    .map((x) => x.reduce((a, b) => b - a))
+    .reduce((a, b) => a + b);
 }
 
 console.log(
