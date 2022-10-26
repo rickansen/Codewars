@@ -28,17 +28,17 @@
 // Solution 2
 function sumIntervals(intervals) {
   let sorted = intervals.sort((a, b) => a[0] - b[0]);
-  let updatedRange = updateWithinRange(sorted);
-  let updatedVal = updateLowerValue(updatedRange);
+  let fixedRange = updateWithinRange(sorted);
+  let finalRange = updateLowerValue(fixedRange);
 
   while (
-    updatedVal.reduce((a, b) => a.concat(b)).join('') !==
-    updatedVal
+    finalRange.reduce((a, b) => a.concat(b)).join('') !==
+    finalRange
       .sort((a, b) => a[0] - b[0])
       .reduce((a, b) => a.concat(b))
       .join('')
   ) {
-    updatedVal = updateLowerValue(updateWithinRange(updatedVal));
+    finalRange = updateLowerValue(updateWithinRange(finalRange));
   }
 
   function updateWithinRange(arr) {
@@ -51,7 +51,7 @@ function sumIntervals(intervals) {
     return arr.map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
   }
 
-  return updatedVal
+  return finalRange
     .map((x) => x.reduce((a, b) => b - a))
     .reduce((a, b) => a + b);
 }
