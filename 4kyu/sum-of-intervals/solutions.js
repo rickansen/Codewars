@@ -43,7 +43,7 @@ function sumIntervals(intervals) {
 
   function updateWithinRange(arr) {
     return arr.map((x, y, z) =>
-      y !== 0 ? (x[0] < z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
+      y !== 0 ? (x[0] <= z[y - 1][1] ? [z[y - 1][1], x[1]] : x) : x
     );
   }
 
@@ -51,9 +51,9 @@ function sumIntervals(intervals) {
     return arr.map((x) => (x[0] > x[1] ? [x[0], x[0]] : x));
   }
 
-  return finalRange
-    .map((x) => x.reduce((a, b) => b - a))
-    .reduce((a, b) => a + b);
+  return fixedRange
+    // .map((x) => x.reduce((a, b) => b - a))
+    // .reduce((a, b) => a + b);
 }
 
 console.log(
