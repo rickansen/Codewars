@@ -1,0 +1,1 @@
+const accum = (s) => [...s.toUpperCase()].map((x,y) => `${x}${x.repeat(y).toLowerCase()}`).join('-')
