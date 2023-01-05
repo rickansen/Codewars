@@ -1,0 +1,1 @@
+const getAverage = marks => ~~(marks.reduce((a,b) => a + b) / marks.length)
