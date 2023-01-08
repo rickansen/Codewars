@@ -1,0 +1,1 @@
+const preFizz = n => Array(n).fill(1).map( (x,y) => y + 1)
