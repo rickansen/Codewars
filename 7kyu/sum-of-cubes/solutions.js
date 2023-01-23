@@ -1,0 +1,1 @@
+const sumCubes = n => Array(n).fill(0).map((x,y) => (y + 1) ** 3).reduce((a,b) => a + b)
