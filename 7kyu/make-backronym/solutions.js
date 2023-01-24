@@ -1,0 +1,1 @@
+var makeBackronym = string => [...string.toUpperCase()].map(x => dict[x]).join(' ')
