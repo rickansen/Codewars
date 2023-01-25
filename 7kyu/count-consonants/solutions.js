@@ -1,0 +1,1 @@
+const consonantCount = str => [...str.toLowerCase()].filter(x => /[bcdfghjklmnpqrstvwxyz]/.test(x)).join('').lengthssss
