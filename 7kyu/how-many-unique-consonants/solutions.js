@@ -1,0 +1,1 @@
+const countConsonants = str => Array(...new Set([...str.toLowerCase()].filter(x => /[bcdfghjklmnpqrstvwxyz]/.test(x))) ).length
