@@ -1,0 +1,1 @@
+const theVar = theVariables => theVariables.split("+").map(x => x.charCodeAt() - 96).reduce((a,b) => a + b)
