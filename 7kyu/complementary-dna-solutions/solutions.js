@@ -1,0 +1,1 @@
+let DNAStrand = dna => dna !== '' ? dna.split('').map(x=> x=='T'? 'A': x=='A' ? 'T': x=='G' ? 'C': x=='C' ? 'G': '').join(''): dna
