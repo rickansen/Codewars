@@ -1,4 +1,4 @@
-const tripleTrouble = (one, two, three) => [...one].map( (x,y) => `${x}${two[y]}${three[y]}`).join('') 
+const tripleTrouble =  (one, two, three) => [...one].map( (x,y) => `${x}${two[y]}${three[y]}`).join('') 
 
 console.log(tripleTrouble("aaa","bbb","ccc"), "abcabcabc");
 console.log(tripleTrouble("aaaaaa","bbbbbb","cccccc"), "abcabcabcabcabcabc");
