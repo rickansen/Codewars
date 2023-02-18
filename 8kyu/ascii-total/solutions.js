@@ -1,0 +1,1 @@
+const uniTotal = string => string ? [...string].map(x => x.charCodeAt()).reduce((a,b) => a + b) : 0
