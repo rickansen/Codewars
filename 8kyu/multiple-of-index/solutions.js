@@ -1,0 +1,1 @@
+const multipleOfIndex = a => a.filter( (x,y) => x % y === 0)
