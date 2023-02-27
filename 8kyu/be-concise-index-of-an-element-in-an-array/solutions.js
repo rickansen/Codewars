@@ -1,0 +1,1 @@
+const find=(x, y)=>x.includes(y)?x.indexOf(y):"Not found"
