@@ -1,0 +1,1 @@
+const multiTable = number => Array(10).fill(1).map((x,y) => `${y+1} * ${number} = ${(y+1)*number}`).join('\n')
