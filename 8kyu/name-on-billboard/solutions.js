@@ -1,0 +1,1 @@
+const billboard = (name, price = 30) => [...name].map(x => price).reduce((a,b) => a + b)
