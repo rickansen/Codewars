@@ -1,0 +1,1 @@
+const contamination = (text, char) => text.replace(/./g, char)
