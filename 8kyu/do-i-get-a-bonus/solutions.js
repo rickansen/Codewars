@@ -8,6 +8,3 @@ console.log(bonusTime(60000, false), '£60000');
 console.log(bonusTime(2, true), '£20');
 console.log(bonusTime(78, false), '£78');
 console.log(bonusTime(67890, true), '£678900');
-
-// Submitted, looking for a new kata now :)) 
-// Say hi if you're there! 
