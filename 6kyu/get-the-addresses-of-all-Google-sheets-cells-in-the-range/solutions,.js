@@ -1,5 +1,4 @@
 function getCellAddresses(range) {
-  // loop is (letter minus letter + 1) * (number - number + 1)
   let numericCell = range
     .split(':')
     .map((x) => [x.match(/[A-Z]/)[0].charCodeAt() - 64, +x.match(/\d{1,}/)[0]]);
@@ -23,15 +22,11 @@ function getCellAddresses(range) {
       );
     } else {
       arr.push(
-        `${String.fromCharCode(
-          numericCell[0][0] + 64 + (i % (numericCell[0][0] - 1))
-        )} ${+numericCell[0][1] + (i % (numericCell[0][1] - 1))} ${
-          (i + 1) / numericCell[0][0]
+        `${String.fromCharCode(numericCell[0][0] + 64 + (i % rowLength))}${
+          +numericCell[0][1] + Math.floor(i / columnLength)
         }`
       );
     }
-
-    //String.fromCharCode(numericCell[0][1] + (i % (numericCell[0][1] - 1)) )
   }
 
   return arr;
